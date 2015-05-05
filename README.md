@@ -1,7 +1,11 @@
 # MedicalImageDiagnosticSystem
 BioMedical CT Image Diagnostic System
 
-  Current target organ is only Kidney
+  Current target organ is Kidney 
+  
+  Modality of Image is CT scan.
+  
+  Current system only uses Command line User Interfae.
   
   Workflow:
   
