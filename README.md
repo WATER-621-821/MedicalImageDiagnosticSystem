@@ -11,6 +11,8 @@ BioMedical CT Image Diagnostic System
   
        1)Registration-->output-->Segmentation-->output-->Quantification&Visualization
        
+                  OR
+       
        2) Registration-->output
          
           Segmentation-->output
