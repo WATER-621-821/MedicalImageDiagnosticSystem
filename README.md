@@ -1,7 +1,7 @@
 # MedicalImageDiagnosticSystem
 BioMedical CT Image Diagnostic System
 
-  Current target organ is Kidney 
+  Current target organ is Lungs 
   
   Modality of Image is CT scan.
   
