@@ -15,7 +15,7 @@ string segmentedImage;
 
 // this is used to create unique name for dicom converted 3d images.
 static int dicomConversionCount=0;
-
+static string inputSignal = string("==>");
 
 /**
 	starts interactive Mode of the diagnosis system
@@ -136,18 +136,19 @@ void interactiveMode()
 	cout<<"-----------------------------------------------------------------------"<<endl;
 	cout<<"-----------------------------------------------------------------------"<<endl;
 	cout<<"| Welcome to our CT Image Diagnostic System                           |"<<endl;
-	cout<<"| We will help you diagnose and analyse kidneys in a CT scan          |"<<endl;
-	cout<<"| NOTE: Currently we only work with CT scan images for kidneys        |"<<endl;
+	cout<<"| We will help you diagnose and analyse Lungs in a CT scan            |"<<endl;
+	cout<<"| NOTE: Currently we only work with CT scan images for Lungs          |"<<endl;
 	cout<<"-----------------------------------------------------------------------"<<endl;
 	cout<<"-----------------------------------------------------------------------\n\n"<<endl;
 
 	do
 	{
 		
-		cout<<"Please select from the following:"<<endl;
+		cout<<"\nPlease select from the following:"<<endl;
 		cout<<"   Enter 1 for a full diagnosis of a CT image"<<endl;
 		cout<<"   Enter 2 to separately evaluate registration and segmentation of a CT image"<<endl;
 		cout<<"   Enter e to exit"<<endl;
+		cout<<inputSignal;
 		cin >> userSelection;
 		if(userSelection.compare("e") == 0) break;
 		else if(userSelection.compare("1") == 0) fullDiagnosis();
@@ -171,8 +172,9 @@ void partialDiagnosis()
 {
 	string userSelection = "";
 
-	cout<<"   Enter 1 for registration"<<endl;
+	cout<<"\n   Enter 1 for registration"<<endl;
 	cout<<"   Enter 2 for segmentation"<<endl;
+	cout<<inputSignal;
 	cin >> userSelection;
 
 
@@ -195,8 +197,9 @@ string getInputType()
 {
 	string userSelection = "";
 
-	cout<<"   Enter 1 to input dicom series"<<endl;
+	cout<<"\n   Enter 1 to input dicom series"<<endl;
 	cout<<"   Enter 2 to input a 3d image"<<endl;
+	cout<<inputSignal;
 	cin >> userSelection;
 
 	if(userSelection.compare ("1")==0) userSelection = "d";
@@ -234,6 +237,7 @@ string getInputDicomSeries()
 	string outputFileFormat;
 
 	cout<<"   Enter the dicom series folder:"<<endl;
+	cout<<inputSignal;
 	cin>>inputFolder;
 
 
@@ -256,6 +260,7 @@ string getInput3dImage()
 	string inputFile;
 
 	cout<<"   Enter the complete 3d input file (along with format):"<<endl;
+	cout<<inputSignal;
 	cin>>inputFile;
 
 	return inputFile;
@@ -268,8 +273,10 @@ string getOutputImageName()
 	string outputFileFormat;
 
 	cout<<"   Enter the output file name(not with format):"<<endl;
+	cout<<inputSignal;
 	cin>>outputFile;
 	cout<<"   Enter the output file format:"<<endl;
+	cout<<inputSignal;
 	cin>>outputFileFormat;
 
 	return (outputFile+"."+outputFileFormat);
@@ -326,9 +333,11 @@ void executeSegmentation(string inputFile, string outputFile, bool downSample, b
 	double time0, time1;
 	time0=0; time1=0;
 
-	cout<<"   Enter the lower threshold level :"<<endl;
+	cout<<"\n   Enter the lower threshold level :"<<endl;
+	cout<<inputSignal;
 	cin>>threshold;
 	cout<<"   Enter the scale level:"<<endl;
+	cout<<inputSignal;
 	cin>>level;
 
 	if(downSample)
@@ -351,7 +360,7 @@ void executeSegmentation(string inputFile, string outputFile, bool downSample, b
 	seg.performSegmentation();
 	time1 = sec();
 
-	cout<<"Time for Segmentation: "<<(time1-time0)<<" secs"<<endl;
+	cout<<"\nTime for Segmentation: "<<(time1-time0)<<" secs"<<endl;
 }
 
 double sec()

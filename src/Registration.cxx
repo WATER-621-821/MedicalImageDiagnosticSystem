@@ -49,9 +49,9 @@
 		      if(filter)
 		        {
 		        filter->SetMaximumRMSError(this->max_rms_e[this->rms_counter]);
-		        std::cout << filter->GetMetric() <<  "  RMS Change: " << filter->GetRMSChange() << std::endl;
+		        //std::cout << filter->GetMetric() <<  "  RMS Change: " << filter->GetRMSChange() << std::endl;
 
-		         std::cout << "Level Tolerance=  "<<filter->GetMaximumRMSError ()<<std::endl;
+		         //std::cout << "Level Tolerance=  "<<filter->GetMaximumRMSError ()<<std::endl;
 		    }
 
 		}
@@ -90,9 +90,9 @@
 		    }
 		  void Execute( const itk::Object *, const itk::EventObject & )
 		    {
-		    std::cout << "----------------------------------" << std::endl;
+		    //std::cout << "----------------------------------" << std::endl;
 		    this->rms_counter = this->rms_counter + 1;
-		    std::cout << "----------------------------------" << std::endl;
+		    //std::cout << "----------------------------------" << std::endl;
 		    }
 		 
 		  void setRMS(unsigned int rms_count)
