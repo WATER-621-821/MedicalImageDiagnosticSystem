@@ -81,7 +81,7 @@ void WatershedSegmentation:: performSegmentation()
     gradienMagnitudeFilter->SetInput( image );
     gradienMagnitudeFilter->SetSigma( 1.0 );
 
-	cout<<"gradientFilter is Set\n";
+	//cout<<"gradientFilter is Set\n";
 	gradienMagnitudeFilter->Update();
 	//cout<<"gradienMagnitudeFilter->Update();\n";
 
@@ -103,7 +103,7 @@ void WatershedSegmentation:: performSegmentation()
     watershedFilter->SetThreshold( this->threshold );
     watershedFilter->SetLevel( this->level );
 	
-	cout<<"watershedFilter is Set\n";
+	//cout<<"watershedFilter is Set\n";
 
   //
   //  Instantiate the filter that will encode the label image
@@ -124,7 +124,7 @@ void WatershedSegmentation:: performSegmentation()
 
     ColorMapFilterType::Pointer colorMapFilter = ColorMapFilterType::New();
 	watershedFilter->Update();
-	cout<<"watershedFilter is updated\n";
+	//cout<<"watershedFilter is updated\n";
     colorMapFilter->SetInput(  watershedFilter->GetOutput() );
 	coloredSegmentedImage =  colorMapFilter->GetOutput() ;
 
@@ -132,7 +132,7 @@ void WatershedSegmentation:: performSegmentation()
     writer->SetInput(coloredSegmentedImage );
     try
     {
-		cout<<"About to write image \n";
+		//cout<<"About to write image \n";
         writer->Update();
     }
     catch( itk::ExceptionObject & excep )

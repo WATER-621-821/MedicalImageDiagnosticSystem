@@ -165,7 +165,7 @@ void fullDiagnosis()
 	outputImageName = getOutputImageName();
 	executeRegistration(fixedImage, movingImage, outputImageName);
 	executeSegmentation(outputImageName, "segmented_"+outputImageName, false, false);
-
+	cout<<"\nImage Processing Complete!"<<endl;
 }
 
 void partialDiagnosis()
@@ -190,6 +190,7 @@ void partialDiagnosis()
 		if(inputType.compare("d")==0) threeDimensionDicomSeriesSegment();
 		else segment3dImage();
 	}
+	cout<<"\nImage Processing Complete!"<<endl;
 
 }
 
@@ -215,17 +216,19 @@ void setInputImage()
 
 	userSelection = getInputType();
 
-	cout<<"      First Input is fixed Image"<<endl;
-	cout<<"      Second Input is moving Image"<<endl;
 	if(userSelection.compare("d") == 0)
-	{
+	{ 
+		cout<<"      Input fixed Image"<<endl;
 		fixedImage = getInputDicomSeries();
+		cout<<"      Input Moving Image"<<endl;
 		movingImage =  getInputDicomSeries();
 		
 	}
 	else if(userSelection.compare("3") == 0) 
 	{
+		cout<<"      Input fixed Image"<<endl;
 		fixedImage = getInput3dImage();
+		cout<<"      Input Moving Image"<<endl;
 		movingImage =  getInput3dImage();
 	}
 }
@@ -251,7 +254,9 @@ string getInputDicomSeries()
 	converter.convertTo3dFormat();
 
 	dicomConversionCount++;
-	return (outputFile+"-original."+outputFileFormat);
+	outputFile = converter.getOutputFileName()+"."+converter.getOutputFileFormat();
+	
+	return outputFile;
 
 }
 
@@ -309,7 +314,6 @@ void segment3dImage()
 
 void executeRegistration(string fixedIm, string movingIm , string outputIm)
 {
-	
 	GaussianPyramid gm = GaussianPyramid(fixedIm, "down_sampled_"+fixedIm);
 	gm.execute();
 	gm.inputImage = movingIm;
